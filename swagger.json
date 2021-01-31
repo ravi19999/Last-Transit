@@ -1,0 +1,465 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Last Transit API",
+        "description": "Requests you can make to the API",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Last Transit APi",
+            "description": "API for the Last Transit Website"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json",
+        "multipart/form-data"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/products": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Get the list of all products",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/products"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Create a new product",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "type": "file",
+                        "name": "productImage",
+                        "description": "Image of the product to be added"
+                    },
+                    {
+                        "in": "body",
+                        "name": "details",
+                        "description": "Details of the product you wish to add",
+                        "schema": {
+                            "$ref": "#/definitions/products"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/products"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update a product with it's id",
+                "tags": [
+                    "products"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Details",
+                        "description": "Details of the product you wish to add",
+                        "schema": {
+                            "$ref": "#/definitions/products"
+                        }
+                    },
+                    {
+                        "in": "formData",
+                        "type": "file",
+                        "name": "productImage",
+                        "description": "Image of the product to be added"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    }
+                }
+            }
+        },
+        "/products/{id}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Get product with it's id"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get one product with it's id",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update a product with it's id",
+                "tags": [
+                    "products"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "in": "path",
+                        "required": true,
+                        "name": "id"
+                    },
+                    {
+                        "in": "body",
+                        "name": "product",
+                        "description": "Details of the product you wish to add",
+                        "schema": {
+                            "$ref": "#/definitions/products"
+                        }
+                    },
+                    {
+                        "in": "formData",
+                        "type": "file",
+                        "name": "productImage",
+                        "description": "Image of the product to be added"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a product",
+                "tags": [
+                    "products"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "in": "path",
+                        "required": true,
+                        "name": "id"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/products"
+                        }
+                    }
+                }
+            }
+        },
+        "/partners/": {
+            "get": {
+                "tags": [
+                    "partners"
+                ],
+                "summary": "Get the list of all partners",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/partners"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "partners"
+                ],
+                "summary": "Create a new partner",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "type": "file",
+                        "name": "logo",
+                        "description": "Image of the product to be added"
+                    },
+                    {
+                        "in": "body",
+                        "name": "details",
+                        "description": "Details of the product you wish to add",
+                        "schema": {
+                            "$ref": "#/definitions/partners"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/partners"
+                        }
+                    }
+                }
+            }
+        },
+        "/partners/{id}": {
+            "get": {
+                "tags": [
+                    "partners"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Get partner with id"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Get one partner with the given id",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update a partner with their id",
+                "tags": [
+                    "partners"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Details",
+                        "description": "Details of the partner you wish to add",
+                        "schema": {
+                            "$ref": "#/definitions/partners"
+                        }
+                    },
+                    {
+                        "in": "formData",
+                        "type": "file",
+                        "name": "logo",
+                        "description": "Image of the product to be added"
+                    },
+                    {
+                        "in": "path",
+                        "type": "string",
+                        "name": "id",
+                        "description": "Id of the partner you wish to update",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/partners"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a partner",
+                "tags": [
+                    "partners"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "in": "path",
+                        "required": true,
+                        "name": "id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/partners"
+                        }
+                    }
+                }
+            }
+        },
+        "/offers": {
+            "get": {
+                "tags": [
+                    "offers"
+                ],
+                "summary": "Get the list of all offers",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/offers"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "offers"
+                ],
+                "summary": "Create a new offer",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "type": "file",
+                        "name": "image",
+                        "description": "Image of the offer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "details",
+                        "description": "Details about the offer to be added",
+                        "schema": {
+                            "$ref": "#/definitions/offers/details"
+                        }
+                    },
+                    {
+                        "in": "body",
+                        "name": "name",
+                        "description": "Details about the offer to be added",
+                        "schema": {
+                            "$ref": "#/definitions/offers/name"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/offers"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "products": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "productName": {
+                    "type": "string"
+                },
+                "details": {
+                    "type": "string"
+                },
+                "productImage": {
+                    "type": "string"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string"
+                }
+            }
+        },
+        "partners": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "partnerName": {
+                    "type": "string"
+                },
+                "logo": {
+                    "type": "string"
+                },
+                "details": {
+                    "type": "string"
+                },
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "id": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "offers": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "details": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
