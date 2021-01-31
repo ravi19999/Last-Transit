@@ -34,7 +34,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(cors());
 
-mongoose.connect("mongodb://localhost/tasks", {
+mongoose.connect("mongodb+srv://ravi:someonelikeyou@cluster0.fh0uv.mongodb.net/<dbname>?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
